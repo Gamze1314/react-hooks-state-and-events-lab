@@ -2,25 +2,22 @@ import React, { useState } from "react";
 import Item from "./Item";
 
 function ShoppingList({ items }) {
-  const [selectedCategory, setselectedCategory] = useState("All");
 
-  function handleChange(e) {
-    setselectedCategory(e.target.value);
-  }
+const [selectedCategory, setSelectedCategory] = useState("All");
+// items are changing, can it be state ?
+
 
   const filtered = items.filter((item) => {
-    if (selectedCategory === "All") {
-      return true;
-    } else {
-      return item.category === selectedCategory;
-    }
+
+   return  selectedCategory === "All" ? true : item.category === selectedCategory;
   });
+
 
   return (
     <div className="ShoppingList">
       <div className="Filter">
-        <select onChange={handleChange} name="filter">
-          <option value="All">Filter by category</option>
+        <select onChange={(e) => setSelectedCategory(e.target.value)} name="filter">
+          <option value="All">All</option>
           <option value="Produce">Produce</option>
           <option value="Dairy">Dairy</option>
           <option value="Dessert">Dessert</option>
