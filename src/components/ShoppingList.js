@@ -4,15 +4,13 @@ import Item from "./Item";
 function ShoppingList({ items }) {
 
 const [selectedCategory, setSelectedCategory] = useState("All");
-// items are changing, can it be state ?
-
 
   const filtered = items.filter((item) => {
 
    return  selectedCategory === "All" ? true : item.category === selectedCategory;
   });
 
-
+// display filtered items => render Item component for each
   return (
     <div className="ShoppingList">
       <div className="Filter">
